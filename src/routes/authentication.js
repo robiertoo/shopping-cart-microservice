@@ -6,19 +6,27 @@ const User = require('../models/User');
 let router = express.Router()
 
 router.post('/login', async (req, res) => {
-    if(req.body.password == null) return res.json({
-        message: "Password is empty."
+    let { password, email } = req.body
+
+    if(!password || !email) return res.json({
+        message: "Password or Email is empty."
     })
 
     let user = await User.findOne({
         where: {
-            "email": req.body.email
+            email
         }
     })
 
-    if(bcrypt.compareSync(req.body.password, user.password)) {
+    if(!user) return res
+        .status(401)
+        .json({
+            message: "Invalid credentials."
+        })
+
+    if(bcrypt.compareSync(password, user.password)) {
         const token = jwt.sign({ id: user.id }, process.env.SECRET, {
-            expiresIn: 300
+            expiresIn: 500
         })
 
         return res.json({
