@@ -11,6 +11,6 @@ const Cart = database.define('cart', {
     },
 })
 
-Cart.hasMany(Item)
+// Cart.hasMany(Item)
 
 module.exports = Cart

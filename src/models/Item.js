@@ -12,7 +12,7 @@ const Item = database.define('item', {
     },
 })
 
-Item.belongsTo(Cart)
-Item.hasOne(Product)
+// Item.belongsTo(Cart)
+// Item.hasOne(Product)
 
 module.exports = Item

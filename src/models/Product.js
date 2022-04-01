@@ -19,6 +19,6 @@ const Product = database.define('product', {
     }
 })
 
-Product.belongsTo(Item)
+// Product.belongsTo(Item)
 
 module.exports = Product
