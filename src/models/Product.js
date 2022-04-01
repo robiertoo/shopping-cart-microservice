@@ -1,8 +1,7 @@
 const Sequelize = require('sequelize')
 const database = require('../db')
-const Item = require('./Item')
 
-const Product = database.define('product', {
+let Product = database.define('product', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -18,7 +17,5 @@ const Product = database.define('product', {
         allowNull: false
     }
 })
-
-// Product.belongsTo(Item)
 
 module.exports = Product

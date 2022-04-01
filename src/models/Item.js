@@ -3,7 +3,7 @@ const database = require('../db')
 const Product = require('./Product')
 const Cart = require('./Cart')
 
-const Item = database.define('item', {
+let Item = database.define('item', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -12,7 +12,7 @@ const Item = database.define('item', {
     },
 })
 
-// Item.belongsTo(Cart)
-// Item.hasOne(Product)
+Item.belongsTo(Cart)
+Item.belongsTo(Product)
 
 module.exports = Item

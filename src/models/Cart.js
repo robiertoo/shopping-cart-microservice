@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const database = require('../db')
 const Item = require('./Item')
 
-const Cart = database.define('cart', {
+let Cart = database.define('cart', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -11,6 +11,6 @@ const Cart = database.define('cart', {
     },
 })
 
-// Cart.hasMany(Item)
+Cart.hasMany(Item)
 
 module.exports = Cart
