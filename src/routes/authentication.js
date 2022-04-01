@@ -1,13 +1,23 @@
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 
 const express = require('express');
-const res = require('express/lib/response');
+const User = require('../models/User');
 let router = express.Router()
 
-router.post('/login', (req, res) => {
-    if(req.body.username === 'roberto' && req.body.password === 123) {
-        const id = 1
-        const token = jwt.sign({ id }, process.env.SECRET, {
+router.post('/login', async (req, res) => {
+    if(req.body.password == null) return res.json({
+        message: "Password is empty."
+    })
+
+    let user = await User.findOne({
+        where: {
+            "email": req.body.email
+        }
+    })
+
+    if(bcrypt.compareSync(req.body.password, user.password)) {
+        const token = jwt.sign({ id: user.id }, process.env.SECRET, {
             expiresIn: 300
         })
 
