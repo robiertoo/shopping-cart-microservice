@@ -1,4 +1,5 @@
 (async () => {
+    const verifyJWT = require('./services/verifyJWT')
     const express = require('express')
     const app = express()
 
@@ -6,6 +7,7 @@
 
     const productsRouter = require('./routes/products')
     const cartRouter = require('./routes/cart')
+    const authRouter = require('./routes/authentication')
 
     const bodyParser = require('body-parser')
 
@@ -20,8 +22,9 @@
         })
     })
 
-    app.use('/products', productsRouter)
-    app.use('/cart', cartRouter)
+    app.use('/auth', authRouter)
+    app.use('/products', verifyJWT, productsRouter)
+    app.use('/cart', verifyJWT, cartRouter)
 
     app.listen(3000, () => console.log('Server running...'))
 })()
