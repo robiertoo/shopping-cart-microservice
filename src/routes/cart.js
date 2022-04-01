@@ -18,7 +18,7 @@ router.get('/:id', async (req, res) => {
         let product = await Product.findByPk(req.params.id)
         res.send(product)
     } catch (error) {
-        res.send(error.errors)
+        res.send(error)
     }
 })
 
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
         })
         res.send(product)
     } catch (error) {
-        res.send(error.errors)
+        res.send(error)
     }
 })
 
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
         res.send(await product.save())
 
     } catch (error) {
-        res.send(error.errors)
+        res.send(error)
     }
 })
 
@@ -57,7 +57,7 @@ router.delete('/:id', async (req, res) => {
         let product = await Product.findByPk(id)
         res.send(await product.destroy())
     } catch (error) {
-        res.send(error.errors)
+        res.send(error)
     }
 })
 
