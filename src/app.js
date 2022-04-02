@@ -1,4 +1,5 @@
 (async () => {
+    require('./associations')
     const verifyJWT = require('./services/verifyJWT')
     const express = require('express')
     const app = express()

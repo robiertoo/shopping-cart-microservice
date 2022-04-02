@@ -1,0 +1,10 @@
+const Cart = require("./models/Cart")
+const Item = require("./models/Item")
+const Product = require("./models/Product")
+const User = require("./models/User")
+
+User.hasMany(Cart)
+Cart.hasMany(Item)
+Cart.belongsTo(User)
+Item.belongsTo(Cart)
+Item.belongsTo(Product)

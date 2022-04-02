@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const database = require('../db')
-const Product = require('./Product')
-const Cart = require('./Cart')
+let Product = require('./Product')
+let Cart = require('./Cart')
 
 let Item = database.define('item', {
     id: {
@@ -11,8 +11,5 @@ let Item = database.define('item', {
         primaryKey: true
     },
 })
-
-Item.belongsTo(Cart)
-Item.belongsTo(Product)
 
 module.exports = Item

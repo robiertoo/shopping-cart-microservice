@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const database = require('../db')
 const Item = require('./Item')
+const User = require('./User')
 
 let Cart = database.define('cart', {
     id: {
@@ -10,7 +11,5 @@ let Cart = database.define('cart', {
         primaryKey: true
     },
 })
-
-Cart.hasMany(Item)
 
 module.exports = Cart

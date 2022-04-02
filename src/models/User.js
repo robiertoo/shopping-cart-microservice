@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const database = require('../db')
+const Cart = require('./Cart')
 
-const User = database.define('user', {
+let User = database.define('user', {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
